@@ -1,0 +1,20 @@
+<ng-container *ngIf="product$ | async as product; ">
+  <mat-card class="product-card">
+    <mat-card-header>
+      <mat-card-title>{{ product.title }}</mat-card-title>
+      <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
+    </mat-card-header>
+    <img width="200" mat-card-image [src]="product.thumbnail" alt="{{ product.title }}">
+    <mat-card-content>
+      <p>{{ product.description }}</p>
+      <p><strong>Price:</strong> {{ product.price }} $</p>
+      <p><strong>Category:</strong> {{ product.category }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <app-product-chart
+    [title]="'Monthly Sales of ' + product.title"
+    [months]="months"
+    [salesData]="product.salesData">
+  </app-product-chart>
+</ng-container>
