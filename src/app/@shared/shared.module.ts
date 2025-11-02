@@ -13,6 +13,8 @@ import {NgxEchartsModule} from "ngx-echarts";
 import {ReactiveFormsModule} from "@angular/forms";
 import { CardComponent } from './components/smcard/card.component';
 import {MatCardModule} from "@angular/material/card";
+import { ToastComponent } from './components/toast/toast.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -21,7 +23,8 @@ import {MatCardModule} from "@angular/material/card";
     ProductTableComponent,
     ProductChartComponent,
     LoadingComponent,
-    CardComponent
+    CardComponent,
+    ToastComponent
   ],
     imports: [
         CommonModule,
@@ -35,7 +38,8 @@ import {MatCardModule} from "@angular/material/card";
         NgxEchartsModule.forRoot({
             echarts: () => import('echarts')
         }),
-        MatCardModule
+        MatCardModule,
+        MatIconModule
     ],
   exports: [ProductTableComponent, LoadingComponent, ProductChartComponent, CardComponent]
 })

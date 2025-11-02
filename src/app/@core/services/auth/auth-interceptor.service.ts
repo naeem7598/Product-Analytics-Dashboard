@@ -3,7 +3,6 @@ import {AuthService} from "./auth.service";
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {catchError, finalize, Observable, retry, tap, throwError} from "rxjs";
 import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoadingService} from "../loading.service";
 
 @Injectable({
@@ -13,7 +12,6 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar,
     private spinner: LoadingService
   ) {}
 
@@ -46,7 +44,6 @@ export class AuthInterceptorService implements HttpInterceptor {
 
         // نمایش پیام به کاربر
         const message = error.error?.message || 'An unexpected error occurred';
-        // this.snackBar.open(message, 'Close', { duration: 5000 });
 
         return throwError(() => new Error(message));
       }),

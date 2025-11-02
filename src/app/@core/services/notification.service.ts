@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ToastComponent} from "../../@shared/components/toast/toast.component";
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +8,23 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class NotificationService {
 
   constructor(private snackBar: MatSnackBar) { }
+
   showError(message: string): void {
-    this.snackBar.open(message, 'close', {
-      duration: 4000,
-      panelClass: ['error-snackbar']
+    this.snackBar.openFromComponent(ToastComponent, {
+      data: { message: message },
+      duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
+      panelClass: ['success-snackbar']
     });
   }
 
   showSuccess(message: string): void {
-    this.snackBar.open(message, 'ok', {
-      duration: 3000,
+    this.snackBar.openFromComponent(ToastComponent, {
+      data: { message: message },
+      duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
       panelClass: ['success-snackbar']
     });
   }
