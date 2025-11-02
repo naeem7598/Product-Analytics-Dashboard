@@ -11,6 +11,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NgxEchartsModule} from "ngx-echarts";
 import {ReactiveFormsModule} from "@angular/forms";
+import { CardComponent } from './components/smcard/card.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -18,21 +20,23 @@ import {ReactiveFormsModule} from "@angular/forms";
   declarations: [
     ProductTableComponent,
     ProductChartComponent,
-    LoadingComponent
+    LoadingComponent,
+    CardComponent
   ],
-  imports: [
-    CommonModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    ReactiveFormsModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts')
-    })
-  ],
-  exports: [ProductTableComponent, LoadingComponent, ProductChartComponent]
+    imports: [
+        CommonModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        ReactiveFormsModule,
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts')
+        }),
+        MatCardModule
+    ],
+  exports: [ProductTableComponent, LoadingComponent, ProductChartComponent, CardComponent]
 })
 export class SharedModule { }

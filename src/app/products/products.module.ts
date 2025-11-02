@@ -4,7 +4,6 @@ import {ProductsComponent} from './products/products.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../@shared/shared.module";
-import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
   {path: 'products', component: ProductsComponent},
@@ -21,8 +20,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        SharedModule,
-        MatCardModule
+        SharedModule
     ]
 })
 export class ProductsModule {
