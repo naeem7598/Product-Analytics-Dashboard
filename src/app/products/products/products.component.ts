@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../@core/services/products/products.service";
-import {IProductListResponse} from "../../@core/models/products/IProductListResponse";
 import {IProductInfo} from "../../@core/models/products/IProduct-info";
-import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 
 @Component({
@@ -20,11 +18,12 @@ export class ProductsComponent implements OnInit {
   }
   getProductList() {
     this.productService.getProductList().subscribe(res => {
-      // حتماً reference جدید بسازید تا OnPush تغییر را ببیند
+      //  OnPush
       this.products = [...res.products];
     });
   }
   getSelectedRow(productId:number){
-    this.router.navigate(['products',productId]);
+    console.log(productId)
+    this.router.navigate(['/products',productId]);
   }
 }

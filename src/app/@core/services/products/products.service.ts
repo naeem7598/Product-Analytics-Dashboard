@@ -1,25 +1,23 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {IProductListResponse} from "../../models/products/IProductListResponse";
-import {BaseService} from "../base-service";
 import {IProductInfo} from "../../models/products/IProduct-info";
 import {IProductChartInfo} from "../../models/products/IProduct-chart-info";
+import {ProductRepository} from "../../repositories/product-repository";
+import {IListResponse} from "../../models/commone/IListResponse";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService extends BaseService{
+export class ProductsService {
 
-  constructor(http : HttpClient) {
-    super(http);
+  constructor(private productRepo : ProductRepository) {
   }
 
-  getProductList(): Observable<IProductListResponse> {
-    return this.get<IProductListResponse>('products');
+  getProductList(): Observable<IListResponse<IProductInfo>> {
+    return this.productRepo.getProductListRepo();
   }
   getProduct(productId:number):Observable<IProductChartInfo> {
-    return this.get<IProductInfo>(`products/${productId}`).pipe(
+    return this.productRepo.getProductByIdRepo(productId).pipe(
       map(product => ({
         ...product,
         salesData: Array.from({ length: 12 }, () => Math.floor(Math.random() * 100) + 10)
