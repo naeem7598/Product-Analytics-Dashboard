@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule  } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import {AuthInterceptorService} from "./@core/services/auth/auth-interceptor.ser
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {LayoutModule} from "./layout/layout.module";
 import {AuthModule} from "./auth/auth.module";
+import {GlobalErrorHandler} from "./@core/handlers/global-error-handler";
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +25,8 @@ import {AuthModule} from "./auth/auth.module";
     SharedModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

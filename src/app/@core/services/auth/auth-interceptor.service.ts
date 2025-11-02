@@ -36,7 +36,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       tap(event => console.log('[HTTP Response]', event)),
       retry(1), // retry once on network error
       catchError((error: HttpErrorResponse) => {
-        console.error('[HTTP Error]', error);
+        console.log('[HTTP Error]', error);
 
         // اگر 401 بود logout و redirect
         if (error.status === 401) {
