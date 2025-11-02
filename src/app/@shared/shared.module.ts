@@ -7,7 +7,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { ProductChartComponent } from './components/product-chart/product-chart.component';
-import { LoadingComponent } from './loading/loading.component';
+import { LoadingComponent } from './components/loading/loading.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NgxEchartsModule} from "ngx-echarts";
 import {ReactiveFormsModule} from "@angular/forms";
